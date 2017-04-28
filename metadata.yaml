@@ -1,0 +1,7 @@
+name: hello-world-reactive
+summary: hello-world charm in reactive python
+maintainer: Erik Lönroth <erik.lonroth@gmail.com>
+description: |
+   Hello world example in reactive python
+tags:
+  - misc

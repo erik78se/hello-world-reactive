@@ -1,0 +1,31 @@
+# Overview
+
+hello-world-reactive charm is a demo charm that intends to help beginners getting started
+development of extremely basic juju charms.
+
+# Usage
+
+This charm is probably deployed from a local repository like this:
+
+juju deploy ~/juju/charms/hello-world-reactive --series=trusty
+
+With juju, you can test start, stop hooks once its deployed.
+
+juju run --unit hello-world-reactive/1 'hooks/start'
+juju run --unit hello-world-reactive/1 'hooks/stop'
+
+# Configuration
+
+This charm has no configuration items yet. 
+
+# Contact Information
+
+erik.lonroth@gmail.com
+
+## Upstream Project Name
+
+- http://lonroth.net
+
+[service]: http://lonroth.net
+[icon guidelines]: https://jujucharms.com/docs/stable/authors-charm-icon
+

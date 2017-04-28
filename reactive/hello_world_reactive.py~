@@ -1,0 +1,25 @@
+from charms.reactive import when, when_not, set_state, is_state
+from charmhelpers.core.hookenv import status_set
+
+@hook('install')
+def install():
+    
+    status_set('maintenance', 'Installing...')
+
+    set_state('hello-world-reactive.available')
+
+
+@when_not('hello-world-reactive.installed')
+def install_hello_world_reactive():
+
+    set_state('hello-world-reactive.installed')
+
+@when('hello-world-reactive.start')
+def start_hello_world_reactive():
+
+    set_state('hello-world-reactive.started')
+
+@when('apache.started')
+def started():
+
+    status_set('active', 'Hello World')

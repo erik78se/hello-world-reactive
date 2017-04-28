@@ -1,0 +1,5 @@
+options:
+  message:
+    type: string
+    default: "Hello World"
+    description: "This is what a string option might look"
