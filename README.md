@@ -1,11 +1,6 @@
-This tutorial covers basics of developing a juju charm with a "base layer".
+# layer-hello-world
+This is the working code for the "Hello World" tutorial.
 
-A "base layer" (as I interpret it) is a charm that holds some common functionality, perhaps package installations you normally use or deploys code common to all your applications in charms you develop.
+Check the wiki to get started. https://github.com/erik78se/charm-hello-world/wiki
 
-The layer we will develop here will do very little.
-
-Make sure to complete the "hello-world" tutorial before starting this one.
-
-# Create the "layers" working space
-
-    mkdir -p ~/git/juju/layers
+Please feedback if you find this useful or file an issue if you find problems.
