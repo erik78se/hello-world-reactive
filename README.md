@@ -1,6 +1,8 @@
 # layer-flight-check
 
-This is the working code for the "flight-check" tutorial in juju development.
+This is the code for the "flight-check" tutorial in juju development.
+
+You will learn about writing a "Juju Layer" in this tutorial.
 
 It builds on the "Hello World" charm tutorial. https://github.com/erik78se/charm-hello-world/wiki
 
