@@ -1,5 +1,5 @@
 # layer-hello-world
-This is the working code for the "Hello World" tutorial.
+This is the working code for the "Hello World" tutorial in juju development.
 
 Check the wiki to get started. https://github.com/erik78se/charm-hello-world/wiki
 
