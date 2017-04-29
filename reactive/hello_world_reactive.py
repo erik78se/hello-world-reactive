@@ -1,60 +1,100 @@
 from charms.reactive import when, when_not, set_state, is_state, hook, remove_state
-from charmhelpers.core.hookenv import status_set
+from charmhelpers.core.hookenv import status_set, config
+from charmhelpers.core.host import is_container
+
 
 @hook('install')
-def install():
+def install_handler():
 
-    status_set('maintenance', 'Installing...')
-
-    set_state('hello-world-reactive.installed')
+    # Set the user defined "installing" state when this hook event occurs.
+    
+    set_state('hello-world-reactive.installing')
 
 @hook('start')
-def start():
+def start_handler():
 
-    status_set('maintenance', 'Starting...')
+    # Set the user defined "starting" state when this hook event occurs.
+    
+    set_state('hello-world-reactive.starting')
 
-    set_state('hello-world-reactive.started')
+@hook('stop')
+def stop_handler():
 
-    remove_state('hello-world-reactive.stopped')
-
+    # Set the user defined "stopping" state when this hook event occurs.
+    
+    set_state('hello-world-reactive.stopping')
+    
 
 @hook('config-changed')
-def config_changed():
+def config_changed_handler():
+
+    # We could set the user defined "config-changed" state and do this just like
+    # the start, install, stop handlers. But we leave this up to a reader to complete.
     
-    status_set('maintenance', 'Changing config...')
+    pass
     
 
 @hook('update-status')
-def config_changed():
+def update_status_handler():
+
+    # We could set the user defined "update-status" state and do this just like
+    # the start, install, stop handlers. But we leave this up to a reader to complete.
 
     pass
 
 
 @hook('leader-elected')
-def leader_elected():
-
+def leader_elected_handler():
+    
+    # We could set the user defined "leader-elected" state and do this just like
+    # the start, install, stop handlers. But we leave this up to a reader to co
+    
     pass
 
 
-@hook('stop')
-def stop():
+@when('hello-world-reactive.installing')
+def install_handler():
     
+    status_set('maintenance', 'Installing...')
+    
+    # Handle the startup of the application
+    
+    status_set('active', 'I am installing.')
+    
+    # Remove the state "installing" since we are done.
+    
+    remove_state('hello-world-reactive.installing')
+    
+
+@when('hello-world-reactive.starting')
+def start_handler():
+
+    status_set('maintenance', 'Starting...')
+
+    # Handle the start of the application
+    
+    cfg = config()
+
+    # Get the value for the "message" key.
+
+    m = cfg.get('message')
+    
+    status_set('active', ("Started with message: %s" % m))
+
+    # Remove the "starting" state since we are done.
+
+    remove_state('hello-world-reactive.starting')
+
+    
+@when('hello-world-reactive.stopping')
+def stop_handler():
+
     status_set('maintenance', 'Stopping...')
-    set_state('hello-world-reactive.stopped')
-    remove_state('hello-world-reactive.started')
 
-
-@when('hello-world-reactive.started')
-def started():
-
-    # Handle the "hello-world-reactive.started" state
+    # Handle the stop sequence of the application
     
-    status_set('active', 'I am started.')
+    status_set('active', 'I am stopping.')
 
-
-@when('hello-world-reactive.stopped')
-def stopped():
-
-    # Handle the "hello-world-reactive.stopped" state
-    
-    status_set('waiting', 'I am stopped.')
+    # Remove the "stopping" state since we are done.
+        
+    remove_state('hello-world-reactive.stopping')
