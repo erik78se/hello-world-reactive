@@ -1,8 +1,8 @@
-# layer-flight-check
+# hello-world-reactive
 
-This is the working layer code for the "flight-check" tutorial in juju development.
+This is the working layer code for the "hello-world" tutorial in juju development.
 
-You will learn about writing a "Juju Layer" in this tutorial.
+You will learn about writing a "Hello World" charm in this tutorial, using the reactive framework.
 
 It builds on the "Hello World" charm tutorial. https://github.com/erik78se/hello-world/wiki
 
